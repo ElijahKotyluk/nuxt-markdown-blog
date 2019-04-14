@@ -1,6 +1,5 @@
 import pkg from './package'
 
-const dir = require('node-dir');
 const fs = require('fs');
 
 // Array where we will push our routes to:
@@ -14,15 +13,15 @@ const createRoutesArray = () => {
   files.forEach((file) => {
 
     let name = file.substr(0, file.lastIndexOf('.'));
-    let route = '/markdown-files/' + name
+    let route = '/markdown/' + name
 
     routesArray.push(route)
   });
 }
 
 const getSlugs = (markdownFile, index) => {
-  let slug = post.substr(0, post.lastIndexOf('.'));
-  return `/posts/${slug}`
+  let slug = markdownFile.substr(0, markdownFile.lastIndexOf('.'));
+  return `/markdown/${slug}`
 }
 
 export default {
