@@ -1,5 +1,30 @@
 import pkg from './package'
 
+const dir = require('node-dir');
+const fs = require('fs');
+
+// Array where we will push our routes to:
+const routesArray = [];
+
+// Create variable to contain array of markdown files read in our markdown-files directory:
+const files = fs.readdirSync('./static/markdown-files');
+
+// Create a route for each file and push that route to routesArray:
+const createRoutesArray = () => {
+  files.forEach((file) => {
+
+    let name = file.substr(0, file.lastIndexOf('.'));
+    let route = '/markdown-files/' + name
+
+    routesArray.push(route)
+  });
+}
+
+const getSlugs = (markdownFile, index) => {
+  let slug = post.substr(0, post.lastIndexOf('.'));
+  return `/posts/${slug}`
+}
+
 export default {
   mode: 'universal',
 
@@ -27,6 +52,7 @@ export default {
   ** Global CSS
   */
   css: [
+    '@assets/scss/main.scss'
   ],
 
   /*
@@ -39,8 +65,17 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
+    ['@nuxtjs/markdownit', { linkify: true }]
   ],
 
+  /*
+  ** Generate static routes:
+  */
+  generate: {
+    routes: function() {
+      return files.map(getSlugs)
+    }
+  },
   /*
   ** Build configuration
   */
