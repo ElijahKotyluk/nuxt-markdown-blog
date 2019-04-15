@@ -42,19 +42,19 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  background-color: rgba(7, 103, 120, 1);
+  background-color: rgba(47, 142, 159, 0.7);
 
   .toolbar-title {
     margin: auto auto auto 20px;
   }
 
   .toolbar-menu {
-    color: rgba(255, 255, 255, 1);
+    color: rgba(10, 13, 7, 1);
     margin: auto 10px;
     text-decoration: none;
 
     &:hover {
-      color: rgba(140, 140, 140, 1);
+      color: rgba(46, 47, 45, 1);
     }
   }
 }
