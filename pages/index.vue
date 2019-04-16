@@ -1,13 +1,15 @@
 <template>
-  <div class="container">
+  <div class="container index">
+    <p>
+      Dynamic markdown routes:
+    </p>
+    <nuxt-link v-for="(file, index) in markdownFiles" :key="index" :to="file.to">
+      {{ file.title }}
+    </nuxt-link>
+
+    
     <div class="dynamic-markdown-content" v-html="content" />
 
-        <p>
-          Dynamic markdown routes:
-        </p>
-        <nuxt-link v-for="(file, index) in markdownFiles" :key="index" :to="file.to">
-          {{ file.title }}
-        </nuxt-link>
   </div>
 
 </template>
@@ -33,3 +35,9 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.index {
+  align-items: center;
+}
+</style>
